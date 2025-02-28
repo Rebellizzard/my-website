@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <nav>
+        <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+        <a class="active" href="grades.html">Grades</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+     <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grades</title>
+</head>
+<body>
+    <h1 class="grades">MY GRADES</h1>
+    <table border="2">
+        <tr>
+            <th>SUBJECT</th>
+            <th>FINAL GRADE</th>
+        </tr>
+        <tr>
+            <td>COMPRO1</td>
+            <td>81</td>
+        </tr>
+        <tr>
+            <td>INTRO. COM</td>
+            <td>90</td>
+        </tr>
+        <tr>
+            <td>CFVE1</td>
+            <td>87</td>
+        </tr>
+         <tr>
+            <td>DISTRUC1</td>
+            <td>85</td>
+        </tr>
+        <tr>
+            <td>PURCOM</td>
+            <td>86</td>
+        </tr>
+        <tr>
+            <td>NSTP1</td>
+            <td>83</td>
+        </tr>
+       <tr>
+             <td>PATHFIT1</td>
+            <td>91</td>
+       </tr>
+            <tr>
+             <td>STS</td>
+            <td>85</td>
+       </tr>
+        <!-- Add more rows as needed -->
+    </table>
+ 
+</body>
+</html>
+
+
+.about{
+    display: flex;
+    justify-content: center;
+}
+.grades{
+    display: flex;
+    justify-content: center;
+}
