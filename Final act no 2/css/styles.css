@@ -1,0 +1,153 @@
+/* Font definitions */
+/* cyrillic-ext */
+@font-face {
+    font-family: 'Inter';
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/inter/v18/UcCm3FwrK3iLTcvnUwkT9nA2.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+/* Add all other font definitions here */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/poppins/v23/pxiByp8kv8JHgFVrLBT5Z1xlFQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* General styles */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Sidebar styles */
+aside {
+  width: 250px;
+  background-color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid #eee;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.brand img {
+  width: 40px;
+  height: 40px;
+}
+
+.brand span {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+/* Navigation menu styles */
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.menu li:hover {
+  background-color: #f5f5f5;
+}
+
+.menu li.active {
+  background-color: #f0f0f0;
+}
+
+.menu li svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* User profile styles */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border-top: 1px solid #eee;
+  margin-top: auto;
+}
+
+.user-profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-profile h1 {
+  margin: 0;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.user-profile .title {
+  color: #757575;
+  font-size: 0.9em;
+}
+
+/* Main content area */
+main {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-image-container {
+  margin: 20px 0;
+  max-width: 800px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.main-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.main-image-container img:hover {
+  transform: scale(1.02);
+}
+
+.image-caption {
+  text-align: center;
+  color: #666;
+  margin-top: 10px;
+  font-size: 0.9em;
+} 
