@@ -1,0 +1,474 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:wght@400;600;700;900&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary: #1a1a2e;     /* Dark blue background */
+    --secondary: #e9ecef;   /* Light text color */
+    --tertiary: #16213e;    /* Slightly lighter dark blue for main area */
+    --accent: #4d9bf0;      /* Light blue accent */
+    --menu-text: #8b97b4;   /* Muted blue for menu text */
+    --menu-hover: #242b42;  /* Slightly lighter than primary for hover */
+    --card-bg: #242b42;     /* Card background color */
+    --font: "Poppins", sans-serif;
+}
+
+body{
+    font-family: var(--font);
+    display: grid;
+    grid-template-columns: 306px 1fr;
+    grid-template-areas: "sidebar main";
+    height: 100vh;
+    width: 100vw;
+    transition: all .3s ease;
+    color: var(--secondary);
+}
+
+aside{
+    grid-area: sidebar;
+    background-color: var(--primary);
+    padding: 36px 28px 78px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--menu-hover);
+}
+
+.brand{
+    margin-bottom: 64px;
+    display:flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand span{
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--accent);
+}
+
+.brand img{
+    width: 37px;
+    height: auto;
+}
+
+.menu > ul{
+    list-style-type: none;
+}
+
+.menu > ul > li{
+    color: var(--menu-text);
+    padding: 11px;
+    display: flex;
+    align-content: center;
+    border-radius: 8px;
+    transition: all .2s ease;
+    margin-bottom: 7px;
+}
+
+.menu > ul > li > svg{
+    margin-right: 14px;
+    width: 24px;
+    height: 24px;
+}
+
+.menu > ul > li :nth-child(2){
+    flex-grow: 1;
+}
+
+.menu > ul > li:hover{
+    background-color: var(--menu-hover);
+    color: var(--accent);
+    cursor: pointer;
+}
+
+.menu > ul > li:hover > svg > *{
+    stroke: var(--accent);
+}
+
+.menu > ul > li.active{
+    background-color: var(--accent);
+    color: var(--primary);
+}
+
+.menu > ul > li.active > svg > *{
+    stroke: var(--primary);
+}
+
+.user-profile{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    background-color: var(--menu-hover);
+}
+
+.user-profile h1{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 14px;
+    color: var(--secondary);
+}
+
+.user-profile span{
+    font-size: 12px;
+    color: var(--menu-text);
+}
+
+.user-profile img{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+}
+
+main{
+    grid-area: main;
+    background-color: var(--tertiary);
+    padding: 36px;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-content h1 {
+    color: var(--secondary);
+    margin-bottom: 32px;
+    font-size: 32px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.stat-card {
+    background-color: var(--card-bg);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--menu-hover);
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(77, 155, 240, 0.1);
+}
+
+.stat-card h3 {
+    color: var(--menu-text);
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.stat-card p {
+    color: var(--accent);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+@media(max-width: 48em){
+    body{
+        grid-template-columns: 102px 1fr;
+    }
+
+    .brand span, .menu > ul > li > span, .user-profile > div{
+        display: none;
+    }
+
+    svg{
+        margin-right: 0;
+        width: 24px;
+        height: 24px;
+        padding: 0;
+        flex-grow: 1;
+    }
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.product-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--menu-hover);
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.product-card h3 {
+    color: var(--secondary);
+    margin-bottom: 8px;
+}
+
+.product-card .price {
+    color: var(--accent);
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.edit-btn, .add-product-btn, .resolve-btn {
+    background: var(--accent);
+    color: var(--primary);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.edit-btn:hover, .add-product-btn:hover, .resolve-btn:hover {
+    background: var(--accent-hover);
+}
+
+.add-product-btn {
+    background: var(--menu-hover);
+    color: var(--accent);
+    border: 2px dashed var(--accent);
+    padding: 40px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Customer Table */
+.customer-search {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 12px;
+}
+
+.customer-search input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--menu-hover);
+    background: var(--card-bg);
+    border-radius: 6px;
+    color: var(--secondary);
+}
+
+.customer-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.customer-table th,
+.customer-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--menu-hover);
+}
+
+.customer-table th {
+    background: var(--primary);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.status.active {
+    background: rgba(77, 155, 240, 0.1);
+    color: var(--accent);
+}
+
+/* Income Analytics */
+.income-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.trend {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+.trend.up {
+    color: #4CAF50;
+}
+
+.trend.down {
+    color: #f44336;
+}
+
+.chart-container {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: 12px;
+    margin-top: 24px;
+}
+
+.mock-chart {
+    height: 300px;
+    background: linear-gradient(180deg, rgba(77, 155, 240, 0.1) 0%, rgba(77, 155, 240, 0) 100%);
+    border-radius: 8px;
+    margin-top: 16px;
+}
+
+/* Promotions */
+.promotion-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.promo-card {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--menu-hover);
+}
+
+.promo-card h3 {
+    color: var(--secondary);
+    margin-bottom: 8px;
+}
+
+.promo-card p {
+    color: var(--menu-text);
+    margin-bottom: 16px;
+}
+
+.promo-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-bottom: 16px;
+    background: var(--menu-hover);
+    color: var(--menu-text);
+}
+
+.promo-status.active {
+    background: rgba(77, 155, 240, 0.1);
+    color: var(--accent);
+}
+
+/* Service */
+.service-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.support-card, .performance-card {
+    background: var(--card-bg);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--menu-hover);
+}
+
+.ticket {
+    background: var(--primary);
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.ticket h4 {
+    color: var(--secondary);
+    margin: 8px 0;
+}
+
+.ticket p {
+    color: var(--menu-text);
+    margin-bottom: 12px;
+}
+
+.priority {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.priority.high {
+    background: rgba(244, 67, 54, 0.1);
+    color: #f44336;
+}
+
+.priority.medium {
+    background: rgba(255, 152, 0, 0.1);
+    color: #ff9800;
+}
+
+.performance-stat {
+    margin-bottom: 24px;
+}
+
+.performance-stat p {
+    color: var(--menu-text);
+    margin-bottom: 4px;
+}
+
+.performance-stat h4 {
+    color: var(--accent);
+    font-size: 24px;
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media(max-width: 768px) {
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .customer-table {
+        font-size: 14px;
+    }
+    
+    .promotion-cards {
+        grid-template-columns: 1fr;
+    }
+}
