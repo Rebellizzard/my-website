@@ -1,0 +1,55 @@
+header h1 {
+    text-align: center;
+}
+
+header nav ul {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li a {
+    font-weight: bold;
+    color: #007BFF;
+    text-decoration: underline;
+}
+
+header nav ul li a:hover {
+    color: #0056b3;
+}
+
+#featured .post p {
+    color: #333333;
+
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+#featured .post p a {
+    color: #007BFF;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+#featured .post p a:hover {
+    color: #0056b3;
+
+}
+
+article:first-of-type h3 {
+    color: #333333;
+    font-size: 2em;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 5px;
+}
+
+footer p {
+    color: #666666;
+    font-size: 0.9em;
+    text-align: center;
+    margin-top: 20px;
+}
