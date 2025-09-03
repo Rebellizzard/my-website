@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(26, 26, 46, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #4fc3f7;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-section {
+            background: rgba(15, 52, 96, 0.7);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 2px solid #4fc3f7;
+        }
+
+        .form-section h2 {
+            color: #81d4fa;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #b3e5fc;
+            font-weight: bold;
+        }
+
+        input, select {
+            padding: 10px;
+            border: 2px solid #4fc3f7;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #81d4fa;
+            box-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
+        }
+
+        button {
+            background: linear-gradient(45deg, #4fc3f7, #29b6f6);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(79, 195, 247, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 195, 247, 0.4);
+        }
+
+        .table-section {
+            background: rgba(15, 52, 96, 0.7);
+            padding: 25px;
+            border-radius: 10px;
+            border: 2px solid #4fc3f7;
+        }
+
+        .table-section h2 {
+            color: #81d4fa;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #4fc3f7;
+        }
+
+        th {
+            background: rgba(79, 195, 247, 0.2);
+            color: #b3e5fc;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background: rgba(79, 195, 247, 0.1);
+        }
+
+        .no-cars {
+            text-align: center;
+            color: #b3e5fc;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            table {
+                font-size: 14px;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚗 Car Management System 🚗</h1>
+        
+        <!-- Add New Car Form -->
+        <div class="form-section">
+            <h2>➕ Add New Car</h2>
+            <form th:action="@{/addCar}" th:object="${newCar}" method="post">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="licensePlateNumber">License Plate Number:</label>
+                        <input type="text" id="licensePlateNumber" th:field="*{licensePlateNumber}" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="make">Make:</label>
+                        <input type="text" id="make" th:field="*{make}" placeholder="e.g., Toyota, Ford" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="model">Model:</label>
+                        <input type="text" id="model" th:field="*{model}" placeholder="e.g., Corolla, Mustang" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="year">Year:</label>
+                        <input type="number" id="year" th:field="*{year}" min="1900" max="2030" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="color">Color:</label>
+                        <input type="text" id="color" th:field="*{color}" placeholder="e.g., Red, Blue" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="bodyType">Body Type:</label>
+                        <select id="bodyType" th:field="*{bodyType}" required>
+                            <option value="">Select Body Type</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Hatchback">Hatchback</option>
+                            <option value="Coupe">Coupe</option>
+                            <option value="Wagon">Wagon</option>
+                            <option value="Truck">Truck</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="engineType">Engine Type:</label>
+                        <select id="engineType" th:field="*{engineType}" required>
+                            <option value="">Select Engine Type</option>
+                            <option value="Gasoline">Gasoline</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Electric">Electric</option>
+                            <option value="Hybrid">Hybrid</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="transmission">Transmission:</label>
+                        <select id="transmission" th:field="*{transmission}" required>
+                            <option value="">Select Transmission</option>
+                            <option value="Automatic">Automatic</option>
+                            <option value="Manual">Manual</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit">Add Car</button>
+            </form>
+        </div>
+        
+        <!-- Car List Table -->
+        <div class="table-section">
+            <h2>📋 Car List</h2>
+            <div th:if="${#lists.isEmpty(cars)}" class="no-cars">
+                No cars found. Add your first car above!
+            </div>
+            <table th:if="${!#lists.isEmpty(cars)}">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>License Plate</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Year</th>
+                        <th>Color</th>
+                        <th>Body Type</th>
+                        <th>Engine</th>
+                        <th>Transmission</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="car : ${cars}">
+                        <td th:text="${car.carID}"></td>
+                        <td th:text="${car.licensePlateNumber}"></td>
+                        <td th:text="${car.make}"></td>
+                        <td th:text="${car.model}"></td>
+                        <td th:text="${car.year}"></td>
+                        <td th:text="${car.color}"></td>
+                        <td th:text="${car.bodyType}"></td>
+                        <td th:text="${car.engineType}"></td>
+                        <td th:text="${car.transmission}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
+
